@@ -1,0 +1,5 @@
+  <a href="<%= edit_event_path event %>" class="list-group-item">
+    <small class="pull-right event_story"><%= event.as_story %></small>
+    <h4 class="list-group-item-heading"><%= event.title %></h4>
+    <% if event.description? %><p class="list-group-item-text"><%= event.description %></p><% end %>
+  </a>

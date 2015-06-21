@@ -1,0 +1,111 @@
+<%= form_for(@event, html: {class: 'form-horizontal'}) do |f| %>
+
+  <% if @event.errors.any? %>
+    <div class="alert alert-danger">
+    <ul>
+    <% @event.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+      <%= f.label :active, 'Aktif?', class: 'col-sm-3 control-label' %>
+    <div class="col-sm-9">
+      <%= f.check_box :active, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+      <%= f.label :title, 'Nama event *', class: 'col-sm-3 control-label' %>
+    <div class="col-sm-9">
+      <%= f.text_field :title, class: 'form-control', placeholder: 'Meeting sama presiden...'  %>
+    </div>
+  </div>
+
+  <div class="form-group">
+      <%= f.label :description, 'Keterangan', class: 'col-sm-3 control-label' %>
+    <div class="col-sm-9">
+      <%= f.text_area :description, class: 'form-control'  %>
+    </div>
+  </div>
+
+<!--   <div class="form-group">
+      <%= f.label :where, 'Tempat', class: 'col-sm-3 control-label' %>
+    <div class="col-sm-9">
+      <%= f.text_field :where, class: 'form-control'  %>
+    </div>
+  </div> -->
+
+  <div class="form-group">
+    <%= f.label :event_type, 'Waktu *', class: 'col-sm-3 control-label' %>
+
+    <div class="col-sm-9">
+      <div class="well well-sm reminder_time">
+
+      <div class="row">
+      <div class="col-sm-12"><strong>Ingatkan saya</strong> <%= f.select :event_type, Event::TYPES %> <strong>pada...</strong></div>
+      </div>
+
+      <div class="row">
+      <div class="col-sm-2"><%= f.label :r_year, 'tahun' %></div>
+      <div class="col-sm-10">: <%= f.select :r_year, Time.now.year..Time.now.year+5 %></div>
+      </div>
+
+      <div class="row">
+      <div class="col-sm-2"><%= f.label :r_month, 'bulan' %></div>
+      <div class="col-sm-10">: <%= f.select :r_month, Event::MONTHS %></div>
+      </div>
+
+      <div class="row">
+      <div class="col-sm-2"><%= f.label :r_day, 'tanggal' %></div>
+      <div class="col-sm-10">: <%= f.select :r_day, 1..31 %></div>
+      </div>
+
+      <div class="row">
+      <div class="col-sm-2"><%= f.label :r_wday, 'hari' %></div>
+      <div class="col-sm-10">: <%= f.select :r_wday, Event::DAYS %></div>
+      </div>
+
+      <div class="row">
+      <div class="col-sm-2"><%= f.label :r_hour, 'jam' %></div>
+      <div class="col-sm-10">: <%= f.select :r_hour, 0..23 %><strong>:00</strong></div>
+      </div>
+
+      </div>
+
+    </div>
+  </div>
+
+<div class="form-group">
+    <label class="col-sm-3 control-label">Pengingat *</label>
+    <div class="col-sm-9">
+      <div class="well well-sm">
+        <% if @reminders.any? %>
+          <%= collection_check_boxes(:event, :reminder_ids, @reminders, :id, :type_full_name) do |r| %>
+              <div class="checkbox">
+                <label>
+                  <%= r.check_box %> <%= r.text %>
+                </label>
+              </div>
+          <% end %>
+        <% else %>
+          Anda belum mendaftarkan media pengingat, buat terlebih dahulu <%= link_to "di sini", reminders_path %>.
+        <% end %>
+      </div>
+    </div>
+</div>
+
+  <div class="form-group">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-9">
+      * = harus diisi/dipilih<br><br>
+      <%= f.submit 'Simpan', class: 'btn btn-success' %>
+      <% if @event.id %>
+        <%= link_to '<i class="fa fa-trash-o"></i> Hapus'.html_safe, event_path(@event), method: 'delete', class: 'pull-right', data: {confirm: 'Anda yakin?'} %>
+      <% end %>
+    </div>
+  </div>
+
+<%  end %>

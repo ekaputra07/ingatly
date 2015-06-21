@@ -1,0 +1,11 @@
+<% provide(:title, 'Set Zona Waktu') %>
+
+<div class="alert alert-warning" role="alert">
+    <p>Selamat datang di <strong>Ingatly</strong>.</p>
+    <p>Sebelum membuat pengingat event, silahkan pilih Zona waktu (Time Zone) anda berada, ketepatan waktu pengingat akan berpatokan pada zona waktu ini, jadi pilihlah sesuai dengan wilayah anda.</p><br>
+    <%= form_for(@user, url: setup_path) do |f| %>
+    <%= f.time_zone_select :time_zone, /Asia/, {}, class: 'form-control' %>
+    <small>Tips: Untuk anda dengan waktu <strong>WIB</strong> -> <strong>Jakarta</strong>, <strong>WITA</strong> -> <strong>Hong Kong</strong> dan <strong>WIT</strong> -> <strong>Osaka</strong>.</small><br><br>
+    <%= f.submit "Lanjutkan", class: "btn btn-success" %>
+    <% end %>
+</div>

@@ -1,0 +1,7 @@
+  <a href="<%= edit_reminder_path reminder %>" class="list-group-item">
+    <small class="pull-right event_story" style="color: <%= reminder.verified ? "green" : "red" %>">
+        <%= reminder.verified ? '<i class="fa fa-check-circle-o"></i> terverifikasi'.html_safe : '<i class="fa fa-exclamation-triangle"></i> belum terverifikasi'.html_safe %>
+    </small>
+    <h4 class="list-group-item-heading"><%= reminder.type_info[:name] %></h4>
+    <p class="list-group-item-text"><%= reminder.identifier %></p>
+  </a>

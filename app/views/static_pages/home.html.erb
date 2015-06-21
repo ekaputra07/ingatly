@@ -1,0 +1,23 @@
+<% provide(:title, 'Pengingat event penting anda') %>
+
+<div class="jumbotron">
+<h1>Pengingat event penting anda.</h1>
+<p class="lead">Lupa ada meeting hari ini? atau lupa besok adalah ulang tahun anak anda? Jangan biarkan itu terjadi. Ingatly akan membantu anda.</p>
+<% if !user_signed_in? %>
+<p>
+    <%= link_to 'Daftar sekarang! gratis.', new_registration_path(:user), class: 'btn btn-lg btn-success', role: 'button' %>
+</p>
+<% end %>
+</div>
+
+<div class="row marketing">
+    <div class="col-lg-6">
+      <h4><i class="fa fa-bell-o"></i> Multi notifikasi</h4>
+      <p>Dapatkan notifikasi/pengingat yang akan dikirim ke email, melalui SMS atau aplikasi mobile Ingatly (segera) anda.</p>
+    </div>
+
+    <div class="col-lg-6">
+      <h4><i class="fa fa-clock-o"></i> Pengingat sekali atau rutin</h4>
+      <p>Dengan penggunaan yang sangat mudah, anda bisa diingatkan sekali pada satu waktu saja atau ingin diingatkan setiap hari, minggu, bulan bahkan tahun.</p>
+    </div>
+</div>

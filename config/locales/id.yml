@@ -1,0 +1,36 @@
+id:
+  activerecord:
+    attributes:
+      user:
+        password_confirmation: "Konfirmasi password"
+        current_password: "Password saat ini"
+      event:
+        title: "Nama event"
+      reminder:
+        identifier: "Tujuan"   # <= here
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "tidak boleh kosong."
+              taken: "sudah terdaftar."
+            password:
+              blank: "tidak boleh kosong."
+              too_short: "terlalu pendek. Minimal 6 karakter."
+            password_confirmation:
+              confirmation: "tidak sama."
+            current_password:
+              blank: "tidak boleh kosong."
+            reset_password_token:
+              invalid: "tidak valid."
+        event:
+          attributes:
+            title:
+              blank: "tidak boleh kosong."
+        reminder:
+          attributes:
+            identifier:
+              blank: "pengingat tidak boleh kosong."
+  custom:
+    inthepast: "yang dipilih sudah lewat."

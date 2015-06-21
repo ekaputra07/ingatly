@@ -1,0 +1,67 @@
+<% provide(:title, 'Buat Akun') %>
+
+<div class="row">
+<div class="col-sm-12">
+<div class="well">
+<p class="lead">Buat Akun</p>
+<hr>
+
+<div class="row">
+  <div class="col-sm-6">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+        <% if resource.errors.any? %>
+        <div class="alert alert-danger">
+          <ul>
+          <% resource.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        <%# devise_error_messages! %>
+        </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password %>
+          <% if @validatable %>
+          <em>(minimum <%= @minimum_password_length %> karakter)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation, "Konfirmasi password" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Daftar", class: "btn btn-success" %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+  </div>
+  <div class="col-sm-5 col-sm-offset-1">
+      <p>atau daftar melalui media sosial:</p>
+      <div id="oa_social_login_container"></div>
+
+      <script type="text/javascript">
+        var your_callback_script = '<%= oneall_callback_url %>';
+        /* Embeds the buttons into the container oa_social_login_container */
+        var _oneall = _oneall || [];
+        _oneall.push(['social_login', 'set_providers', ['facebook', 'google']]);
+        _oneall.push(['social_login', 'set_callback_uri', your_callback_script]);
+        _oneall.push(['social_login', 'do_render_ui', 'oa_social_login_container']);
+      </script>
+  </div>
+</div>
+
+
+</div>
+</div>
+</div>

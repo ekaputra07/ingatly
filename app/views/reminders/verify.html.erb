@@ -1,0 +1,34 @@
+<% provide(:title, 'Verifikasi') %>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Verifikasi pengingat</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+        <li class="active">
+            <%= link_to '<i class="fa fa-angle-left"></i> kembali'.html_safe, edit_reminder_path(@reminder) %>
+        </li>
+    </ul>
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="well">
+<p>Masukkan 4 digit kode dari pesan tersebut di bawah ini kemudian tekan tombol Verifikasi.</p>
+
+<%= form_tag({controller: 'reminders', action: 'verify'}, class: 'form-horizontal') do %>
+
+<div class="form-group">
+  <div class="col-sm-6">
+    <%= text_field_tag :verification_token, nil, class: 'form-control' %><br>
+    Tidak menerima kode/gagal? <%= link_to "kirim lagi", verify_reminder_path(@reminder, send: true) %>
+  </div>
+  <div class="col-sm-6">
+    <%= submit_tag 'Verifikasi', class: 'btn btn-success' %>
+  </div>
+</div>
+
+<% end %>
+</div>
+<div class="clearfix"></div>

@@ -1,0 +1,96 @@
+<% provide(:title, 'Edit profil') %>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Edit profil</a>
+    </div>
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="row">
+<div class="col-sm-7">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <% if resource.errors.any? %>
+      <div class="alert alert-danger">
+        <ul>
+        <% resource.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      <%# devise_error_messages! %>
+      </div>
+      <% end %>
+
+      <div class="well">
+      <div class="form-group">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Sedang menunggu konfirmasi: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :password %> <i>(Kosongkan apabila anda tidak ingin menggantinya)</i><br />
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+      </div>
+      </div>
+
+
+      <div class="form-group">
+        <%= f.label :current_password %> <i>(masukkan password saat ini untuk menyimpan perubahan)</i><br />
+        <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+      </div>
+
+        <% if current_user.nopasswd %>
+        <div class="alert alert-danger">
+          <p><i class="fa fa-exclamation-circle"></i> Anda mendaftar melalui akun media sosial, jadi tidak mempunyai password untuk mengupdate informasi ini. Silahkan Log out terlebih dahulu dan reset password anda melalui halaman reset(lupa) password dan ikuti langkah yang diinstruksikan. </p>
+          <p>Setelah password diset, selanjutnya bisa login dengan email atau akun media sosial anda.</p>
+        </div>
+        <% end %>
+
+      <div class="form-group">
+        <%= f.submit "Update", class: 'btn btn-success' %>
+      </div>
+    <% end %>
+</div>
+<div class="col-sm-5">
+    <div class="well">
+      <p>Hubungkan dengan media sosial anda untuk mempermudah Log in:</p>
+      <hr>
+    <div id="oa_social_link_container"></div>
+
+    <script type="text/javascript">
+
+      var your_callback_script = '<%= oneall_callback_url %>';
+
+      /* Dynamically add the user_token of the currently logged in user. */
+      /* If the user has no user_token then leave the field blank. */
+      var user_token = '<%= current_user.oneall_token %>';
+
+      /* Embeds the buttons into the container oa_social_link_container */
+      var _oneall = _oneall || [];
+      _oneall.push(['social_link', 'set_providers', ['facebook', 'google']]);
+      _oneall.push(['social_link', 'set_callback_uri', your_callback_script]);
+      _oneall.push(['social_link', 'set_user_token', user_token]);
+      _oneall.push(['social_link', 'do_render_ui', 'oa_social_link_container']);
+
+    </script>
+
+    </div>
+</div>
+</div>
+
+<!--
+<h3>Cancel my account</h3>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<%= link_to "Back", :back %>
+-->

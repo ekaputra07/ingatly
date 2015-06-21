@@ -1,0 +1,60 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+id:
+  devise:
+    confirmations:
+      confirmed: "Alamat email anda berhasil dikonfirmasi. Silahkan log in."
+      send_instructions: "Anda akan mendapatkan email tentang cara konfirmasi akun anda dalam beberapa menit."
+      send_paranoid_instructions: "Jika email anda sudah terdaftar, anda akan mendapatkan email tentang cara konfirmasi akun anda dalam beberapa menit."
+    failure:
+      already_authenticated: "Anda berhasil log in."
+      inactive: "Akun anda belum diaktifkan."
+      invalid: "Invalid %{authentication_keys} or password."
+      locked: "Your account is locked."
+      last_attempt: "You have one more attempt before your account is locked."
+      not_found_in_database: "Invalid %{authentication_keys} or password."
+      timeout: "Your session expired. Please sign in again to continue."
+      unauthenticated: "Silahkan login atau mendaftar terlebih dahulu sebelum melanjutkan."
+      unconfirmed: "Silahkan konfirmasi terlebih dahulu alamat email anda."
+    mailer:
+      confirmation_instructions:
+        subject: "Konfirmasi akun"
+      reset_password_instructions:
+        subject: "Instruksi reset password"
+      unlock_instructions:
+        subject: "Unlock instructions"
+    omniauth_callbacks:
+      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
+      success: "Successfully authenticated from %{kind} account."
+    passwords:
+      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
+      send_instructions: "Anda akan mendapatkan email tentang cara reset password akun dalam beberapa menit."
+      send_paranoid_instructions: "Jika email anda sudah terdaftar, anda akan mendapatkan email tentang cara reset password akun anda dalam beberapa menit."
+      updated: "Password anda sudah diganti."
+      updated_not_active: "Password anda berhasil diganti."
+    registrations:
+      destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
+      signed_up: "Welcome! You have signed up successfully."
+      signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
+      signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
+      signed_up_but_unconfirmed: "Email dengan link aktifasi akun sudah dikirimkan kepada anda. Silahkan aktifkan akun anda melalui email tersebut."
+      update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirm link to confirm your new email address."
+      updated: "Akun anda sudah di perbarui."
+    sessions:
+      signed_in: "Apa kabar? semoga sehat dan sukses selalu."
+      signed_out: "Terima kasih telah menggunakan Ingatly."
+      already_signed_out: "Anda sudah log out."
+    unlocks:
+      send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
+      send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
+      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+  errors:
+    messages:
+      already_confirmed: "sudah terkonfirmasi. Silahkan log in."
+      confirmation_period_expired: "harus dikonfirmasi dalam jangka %{period}, silahkan minta lagi yang baru."
+      expired: "telah kadaluarsa, silahan minta lagi yang baru."
+      not_found: "tidak ditemukan."
+      not_locked: "was not locked"
+      not_saved:
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"

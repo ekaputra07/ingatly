@@ -1,0 +1,64 @@
+<% provide(:title, 'Manager') %>
+<% provide(:ng_app, 'ng-app="manager"'.html_safe) %>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Manage</a>
+    </div>
+    <ul class="nav navbar-nav navbar-left">
+        <li ui-sref-active="active"><a ui-sref="users">Users</a></li>
+        <li ui-sref-active="active"><a ui-sref="events">Events</a></li>
+        <li ui-sref-active="active"><a ui-sref="reminders">Reminders</a></li>
+        <li ui-sref-active="active"><a ui-sref="logs">Logs</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a ng-show="loading"><i class="fa fa-refresh fa-spin navbar-right" style="margin-right:5px"></i></a>
+        </li>
+    </ul>
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div ui-view></div>
+
+<script type="text/ng-template" id="users.html">
+<span class="label label-primary pull-right">Total: {{total}}</span><br>
+<div class="list-group">
+  <a href="" class="list-group-item" ng-repeat="user in users">
+    <small class="pull-right event_story label label-default">{{user.id}}</small>
+    <h4 class="list-group-item-heading">{{user.email}}</h4>
+  </a>
+</div>
+</script>
+
+<script type="text/ng-template" id="events.html">
+<div class="list-group">
+  <a href="" class="list-group-item" ng-repeat="event in events">
+    <small class="pull-right event_story label label-success" ng-if="event.active">Active</small>
+    <small class="pull-right event_story label label-danger" ng-if="!event.active">Inactive</small>
+    <h4 class="list-group-item-heading">{{event.title}}</h4>
+    <p ng-if="event.description">{{event.description}}</p>
+  </a>
+</div>
+</script>
+
+<script type="text/ng-template" id="reminders.html">
+<div class="list-group">
+  <a href="" class="list-group-item" ng-repeat="reminder in reminders">
+    <small class="pull-right event_story label label-success" ng-if="reminder.verified">Verified</small>
+    <small class="pull-right event_story label label-danger" ng-if="!reminder.verified">Unverified</small>
+    <h4 class="list-group-item-heading">{{reminder.identifier}}</h4>
+  </a>
+</div>
+</script>
+
+<script type="text/ng-template" id="logs.html">
+<div class="list-group">
+  <a href="" class="list-group-item" ng-repeat="log in logs">
+    <small class="pull-right event_story label label-default">{{log.created_at}}</small>
+    <p>{{log.message}}</p>
+  </a>
+</div>
+</script>
