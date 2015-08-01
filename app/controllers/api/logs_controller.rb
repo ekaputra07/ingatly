@@ -1,11 +1,24 @@
 class Api::LogsController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_only
+  @@per_page = 10
 
   def index
-    @logs = Log.all.order(created_at: :desc)
+    page = params[:page]? params[:page].to_i : 1
+
+    offset = 0
+    if page > 1
+      offset = (page - 1) * @@per_page
+    end
+
+    total = Log.count
+    has_prev = page > 1
+    has_next = (page * @@per_page) < total
+
+    @logs = Log.order(created_at: :desc).limit(@@per_page).offset(offset)
     respond_to do |format|
-        format.json {render json: {status: :ok, total: @logs.count, results: @logs}}
+        format.json {render json: {status: :ok, total: total, page: page,
+                                   has_prev: has_prev, has_next: has_next, results: @logs}}
     end
   end
 

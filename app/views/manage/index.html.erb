@@ -31,6 +31,10 @@
     <h4 class="list-group-item-heading">{{user.email}}</h4>
   </a>
 </div>
+<ul class="pagination">
+  <li><a href="" ng-show="pagination.has_prev" ng-click="load_pref()">prev</a></li>
+  <li><a href="" ng-show="pagination.has_next" ng-click="load_next()">Next</a></li>
+</ul>
 </script>
 
 <script type="text/ng-template" id="events.html">
@@ -42,6 +46,10 @@
     <p ng-if="event.description">{{event.description}}</p>
   </a>
 </div>
+<ul class="pagination">
+  <li><a href="" ng-show="pagination.has_prev" ng-click="load_pref()">prev</a></li>
+  <li><a href="" ng-show="pagination.has_next" ng-click="load_next()">Next</a></li>
+</ul>
 </script>
 
 <script type="text/ng-template" id="reminders.html">
@@ -52,6 +60,10 @@
     <h4 class="list-group-item-heading">{{reminder.identifier}}</h4>
   </a>
 </div>
+<ul class="pagination">
+  <li><a href="" ng-show="pagination.has_prev" ng-click="load_pref()">prev</a></li>
+  <li><a href="" ng-show="pagination.has_next" ng-click="load_next()">Next</a></li>
+</ul>
 </script>
 
 <script type="text/ng-template" id="logs.html">
@@ -61,4 +73,8 @@
     <p>{{log.message}}</p>
   </a>
 </div>
+<ul class="pagination">
+  <li><a href="" ng-show="pagination.has_prev" ng-click="load_pref()">prev</a></li>
+  <li><a href="" ng-show="pagination.has_next" ng-click="load_next()">Next</a></li>
+</ul>
 </script>
