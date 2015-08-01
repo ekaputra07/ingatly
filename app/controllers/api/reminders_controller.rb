@@ -9,7 +9,7 @@ class Api::RemindersController < ApplicationController
       offset = (page - 1) * @@per_page
     end
 
-    if params[:all] and current_user.is_admin
+    if current_user.is_admin
       total = Reminder.count
       @reminders = Reminder.order(created_at: :desc).limit(@@per_page).offset(offset)
     else
